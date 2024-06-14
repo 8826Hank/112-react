@@ -1,8 +1,11 @@
-export default function CustomCard({item})
-{
-    return(
+import Image from "next/image";
+
+export default function CustomCard({ item }) {
+    return (
         <div className="border text-black">
-            {item.Picture.PictureDescription1}
+            <Image width="200" height="200" src={item.Picture.PictureUrl1} alt={item.Picture.PictureDescription1} />
+            <div>{item.ScenicSpotName}</div>
+            <div>{item.Description}</div>
         </div>
-    )
+    );
 }

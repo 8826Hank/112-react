@@ -34,7 +34,7 @@ import { useState,useEffect } from "react";
     const [TDX_data,setdata] = useState([])
     const tokenURL = 'https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token' 
     const apiKey = 'https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot'
-    useEffect(() =>
+    /*useEffect(() =>
                     {
                       const getToken = async() =>
                         {
@@ -52,7 +52,7 @@ import { useState,useEffect } from "react";
                         });
                         };
                     },{})
-
+    */
 
     const items = [
       {
@@ -180,13 +180,24 @@ import { useState,useEffect } from "react";
       }
     ]
 
+    useEffect(() => {
+      async function fetchData()
+      {
+        const response = await fetch('api/items');
+        const data = await response.json();
+        console.log(data);
+        setItems(data.apidata)
+      }
+      fetchData();
+    },[]);
+
     return (
       <>
       <div className="bg-teal-50">
         <div className="container , mx-auto ">
           <Navbar fluid className="bg-teal-50" >
             <NavbarBrand as={Link} href="https://flowbite-react.com">
-              <img src="https://www.airtmd.com/media/p/131/rhOYfady/0.png" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+              <Image src="https://upload.wikimedia.org/wikipedia/zh/7/7e/National_Taipei_University_of_Technology_seal.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" width="200" height="200" />
               <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white"></span>
             </NavbarBrand>
             <NavbarToggle />
@@ -212,11 +223,11 @@ import { useState,useEffect } from "react";
 
       <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
         <Carousel>
-          <img src="/taitong-image/八拱跨海步橋.jpg" alt="由 Mark Kao - https://www.flickr.com/photos/67415843@N05/43923096555/, CC0, https://commons.wikimedia.org/w/index.php?curid=92750450" />
-          <img src="/taitong-image/台東-小火車.jpg" alt="由 JianEn Yu - https://www.flickr.com/photos/93179224@N04/14729078814/, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=129921752" />
-          <img src="/taitong-image/台東-小野柳.jpg" alt="由 Hatsune0831 - 自己的作品, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=129911668" />
-          <img src="taitong-image/花東 伯朗大道.jpg" alt="由 觀光局資訊室 - https://media.taiwan.net.tw/zh-tw/portal/media/details/22553, CC BY 4.0, https://commons.wikimedia.org/w/index.php?curid=129650650" />
-          <img src="taitong-image/嘉明湖.jpg" alt="由 CHU WayNe - https://www.flickr.com/photos/junes_hours/21186259080/, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=129921943" />
+          <Image src="/taitong-image/八拱跨海步橋.jpg" width="200" height="200" alt="由 Mark Kao - https://www.flickr.com/photos/67415843@N05/43923096555/, CC0, https://commons.wikimedia.org/w/index.php?curid=92750450" />
+          <Image src="/taitong-image/台東-小火車.jpg" width="200" height="200" alt="由 JianEn Yu - https://www.flickr.com/photos/93179224@N04/14729078814/, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=129921752" />
+          <Image src="/taitong-image/台東-小野柳.jpg" width="200" height="200" alt="由 Hatsune0831 - 自己的作品, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=129911668" />
+          <Image src="/taitong-image/花東 伯朗大道.jpg"width="200" height="200" alt="由 觀光局資訊室 - https://media.taiwan.net.tw/zh-tw/portal/media/details/22553, CC BY 4.0, https://commons.wikimedia.org/w/index.php?curid=129650650" />
+          <Image src="/taitong-image/嘉明湖.jpg" width="200" height="200" alt="由 CHU WayNe - https://www.flickr.com/photos/junes_hours/21186259080/, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=129921943" />
         </Carousel>
       </div>
 
@@ -225,8 +236,8 @@ import { useState,useEffect } from "react";
           {travels.map( travel=>
             <Card
             className="max-w-sm"
-            imgAlt={travel.Picture.PictureDescription1}
-            imgSrc={travel.Picture.PictureUrl1}
+            ImageAlt={travel.Picture.PictureDescription1}
+            ImageSrc={travel.Picture.PictureUrl1}
           >
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {travel.ScenicSpotName}
@@ -254,9 +265,9 @@ import { useState,useEffect } from "react";
       <div className="bg-white py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {
-            travels.map(travel=>
-              <CustomCard item={travel}/>
-            )}
+            travels.map((travel,index)=>
+              <CustomCard item={travel} key={index}/>
+          )}
         </div>
       </div>
 
@@ -265,7 +276,7 @@ import { useState,useEffect } from "react";
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <FooterBrand
             href="https://flowbite.com"
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="https://flowbite.com/docs/ s/logo.svg"
             alt="Flowbite Logo"
             name="Flowbite"
           />
