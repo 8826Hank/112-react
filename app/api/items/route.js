@@ -3,12 +3,11 @@ export async function GET()
     // step.1 get access token
     const token = await getToken();
 
-    console.log(token)
     // step.2 get data from TDX token
     if(token)
     {
         const apiData = await fetchData(token);
-        return Response.json({apiData});
+        return Response.json(apiData);
     }
     else
     {
@@ -49,23 +48,25 @@ async function getToken() {
 
 
 async function fetchData(token) {
-    const apiurl = 'https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot';
+    const apiurl = 'https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot/Taichung?%24top=30';
 
     try {
         const response = await fetch(apiurl, {
             method: 'GET',
             headers: {
-                Authorization: `Bearer ${token}`,
-                'content-type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
             },
         });
+        console.log(response);
 
         if (response.ok) {
             const data = await response.json();
             console.log(JSON.stringify(data));
             return data;
         } else {
-            console.error("Error fetching data:", response.statusText);
+            console.error("Error fetching data with status:", response.statusText);
         }
     } catch (error) {
         console.log("Error fetching data", error);

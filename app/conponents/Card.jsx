@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function CustomCard({ item }) {
     return (
         <div className="border text-black">
-            <Image width="200" height="200" src={item.Picture.PictureUrl1} alt={item.Picture.PictureDescription1} />
+            <img src={item.Picture.PictureUrl1} className="object-fill h-96 w-96"></img>
             <div>{item.ScenicSpotName}</div>
             <div>{item.Description}</div>
         </div>
