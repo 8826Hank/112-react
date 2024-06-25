@@ -124,7 +124,7 @@ import CustomCard from "./conponents/Card";
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <FooterBrand
             href="https://flowbite.com"
-            src="https://flowbite.com/docs/ s/logo.svg"
+            src="https://flowbite.com/docs/s/logo.svg"
             alt="Flowbite Logo"
             name="Flowbite"
           />
