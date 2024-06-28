@@ -1,3 +1,7 @@
+/** 
+ * @authur Lin-Hank 
+ * @mail 001linhank@gmail.com
+*/
 import Image from "next/image";
 
 export default function CustomCard({ item }) {

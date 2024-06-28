@@ -1,3 +1,7 @@
+/** 
+ * @authur Lin-Hank 
+ * @mail 001linhank@gmail.com
+*/
 export async function GET()
 {
     // step.1 get access token

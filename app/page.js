@@ -76,7 +76,7 @@ import CustomCard from "./conponents/Card";
           <Navbar fluid className="bg-cyan-200" >
             <NavbarBrand as={Link} href="https://flowbite-react.com">
               <img src="https://upload.wikimedia.org/wikipedia/zh/7/7e/National_Taipei_University_of_Technology_seal.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" width="100px" height="200px"/>
-              <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Taiwan Travale</span>
+              <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Taiwan Travaler</span>
             </NavbarBrand>
             <NavbarToggle />
             <NavbarCollapse className="text-blue-400 hover:text-red-500" >
